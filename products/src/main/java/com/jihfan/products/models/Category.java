@@ -16,8 +16,7 @@ import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-@Entity																// typically represents a table in a DB
-
+@Entity
 public class Category {										
 
 	// PRIVATE ATTRIBUTES
@@ -27,11 +26,11 @@ public class Category {
 	private long id;												
 	
 	@Size(min = 1, max = 255, message = "Category cannot be blank")		// 2) Validations
-	String name;														// 1) set attributes
+	String name;								// 1) set attributes
 	
 	// PUBLIC METHODS		Setters and Getters below
 	
-	public void setName (String name) {									// 3) Getters and Setters
+	public void setName (String name) {					// 3) Getters and Setters
 		this.name = name;
 	}
 	
@@ -40,23 +39,20 @@ public class Category {
 	}
 	
 	// COPY BELOW TO PRODUCT MODEL and swap joincolumns and List <name>
-	@ManyToMany(fetch = FetchType.LAZY)									// 4) MUST SET RELATIONSHIP HERE!!!
+	@ManyToMany(fetch = FetchType.LAZY)						// 4) MUST SET RELATIONSHIP HERE!!!
 	@JoinTable(
-			name = "products",
-			joinColumns = @JoinColumn(name = "category_id"),			// Hint - look at class. 
-			inverseJoinColumns = @JoinColumn(name = "product_id")		//		- this will the the other table you want to join at.
+			name = "products_categories",
+			joinColumns = @JoinColumn(name = "category_id"),		// Hint - look at class. 
+			inverseJoinColumns = @JoinColumn(name = "product_id")		//- this will the the other table you want to join at.
 	)
 	private List<Product> products;
 	
-	public void setProducts (List<Product> products) {					// 6) add getters and setters
+	public void setProducts (List<Product> products) {				// 6) add getters and setters
 		this.products = products;
 	}
 	public List<Product> getProducts(){
 		return products;
 	}
-	
-	// COPY TILL HERE
-	
 	
 	@DateTimeFormat(pattern = "MM:dd:yyy HH:mm:ss")
 	private Date createdAt;
@@ -98,11 +94,7 @@ public class Category {
 		this.createdAt = new Date ();
 		this.updatedAt = new Date ();
 	}
-	
-//	public Category (String name) {
-//		super ();
-//		this.name = name;
-//	}
+
 	
 	
 }
