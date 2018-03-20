@@ -1,6 +1,7 @@
 package com.jihfan.products.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -24,8 +25,12 @@ public class CatService {
 		return (List<Category>) cR.findAll();	
 	}
 	
-	public Category find(Long id) {
-		return cR.findById(id).get();
+//	public Category find(Long id) {
+//		return cR.findById(id).orElse(null);
+//	}
+	
+	public Optional<Category> find(Long id) {
+		return cR.findById(id);
 	}
 	
 	public void destroy(Category cat) {
