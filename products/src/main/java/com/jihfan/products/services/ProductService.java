@@ -1,6 +1,7 @@
 package com.jihfan.products.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -23,8 +24,17 @@ public class ProductService {
 		return (List<Product>) pR.findAll();	
 	}
 	
-	public Product find(Long id) {
-		return pR.findById(id).get();
+//	public Product find(Long id) {
+//	return pR.findById(id).get();
+//}
+	
+	// option 2
+//	public Product getById(Long id) {
+//		return pR.findById(id).orElse(null);
+//	}
+	
+	public Optional<Product> find(Long id) {
+		return pR.findById(id);
 	}
 	
 	public void destroy(Product product) {
