@@ -9,3 +9,4 @@ import com.jihfan.products.models.Category;
 public interface CatRepo extends CrudRepository<Category, Long>{
 
 }
+
