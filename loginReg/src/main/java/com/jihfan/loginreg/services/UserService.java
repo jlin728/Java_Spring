@@ -27,7 +27,7 @@ import com.jihfan.loginreg.repositories.UserRepo;
 
 //		To auto create roles in case we have to drop schemas 
 	    public void init() {
-	    	if(RoleRepo.findAll().size() < 1);
+	    	if(RoleRepo.findAll().size() < 1){
 	    		Role user = new Role();
 	    		user.setName("ROLE_USER");
 	    		
@@ -40,6 +40,7 @@ import com.jihfan.loginreg.repositories.UserRepo;
 	    		RoleRepo.save(user);
 	    		RoleRepo.save(admin);
 	    		//RoleRepo.save(superAdmin);
+		}
 	    }
 	    
 	    public void saveUser(User user) {							//	Takes an User Object
