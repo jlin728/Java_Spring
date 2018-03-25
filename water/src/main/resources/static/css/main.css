@@ -1,0 +1,8 @@
+* {
+	font-family: 'Josefin Sans', sans-serif;
+}
+
+.reviews{
+	height: 50vh;
+	overflow: scroll;
+}
